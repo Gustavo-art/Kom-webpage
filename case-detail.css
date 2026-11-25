@@ -99,6 +99,21 @@
   padding-bottom: clamp(75px, 8vw, 115px);
 }
 
+/* Testimonial på caseundersider */
+.case-detail-media .voices-card blockquote,
+.case-detail-media .voices-card blockquote p {
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.45;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+}
+
+.case-detail-media .voices-card {
+  border-radius: 18px;
+  padding: clamp(24px, 3vw, 38px);
+  justify-content: center;
+}
+
 .case-detail-image {
   display: block;
   width: 100%;
