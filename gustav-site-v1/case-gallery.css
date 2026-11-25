@@ -1,0 +1,251 @@
+/* ÉT synligt billede ad gangen på caseundersiderne.
+   Ingen regler for forsiden eller .case-item / .case-photo. */
+.case-detail-media .case-gallery-slider {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #e9e4df;
+}
+
+.case-gallery-slider__stage,
+.case-gallery-slider__open {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.case-gallery-slider__stage {
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-y pinch-zoom;
+}
+
+.case-gallery-slider__open {
+  position: absolute;
+  inset: 0;
+  appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.case-gallery-slider__open[hidden] {
+  display: none;
+}
+
+.case-detail-media .case-gallery-slider .case-detail-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+  pointer-events: none;
+}
+
+/* Pilene ligger midt på billedets højde – én i hver side. */
+.case-gallery-slider__arrow {
+  appearance: none;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 12px;
+  background: rgba(45, 45, 45, .48);
+  color: #fff;
+  padding: 0;
+  transition: background-color 180ms ease, scale 180ms ease;
+  line-height: 1;
+  cursor: pointer;
+}
+.case-gallery-slider__arrow--prev { left: 14px; }
+.case-gallery-slider__arrow--next { right: 14px; }
+.case-gallery-slider__arrow[hidden] { display: none; }
+
+
+.case-gallery-slider__arrow:focus-visible,
+.case-gallery-slider__open:focus-visible {
+  outline: 3px solid #27684c;
+  outline-offset: -4px;
+}
+
+/* Hvis kun galleriet er i sektionen, centreres den ene boks. */
+.case-detail-media > .case-gallery-slider:only-child {
+  grid-column: 1 / -1;
+  max-width: 760px;
+  justify-self: center;
+}
+
+/* Valgfri stor visning ved klik på selve billedet. */
+.case-lightbox {
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  width: min(1260px, calc(100vw - 32px));
+  max-width: none;
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 54px 64px 26px;
+  border: 0;
+  border-radius: 18px;
+  background: #161918;
+  color: #fff;
+  overflow: hidden;
+}
+.case-lightbox::backdrop { background: rgba(0, 0, 0, .85); }
+.case-lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.case-lightbox__figure {
+  min-width: 0;
+  margin: 0;
+  text-align: center;
+  touch-action: pan-y;
+}
+.case-lightbox__image {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100dvh - 150px);
+  width: auto;
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
+}
+.case-lightbox__close,
+.case-lightbox__arrow {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+.case-lightbox__close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 32px;
+  line-height: 1;
+  padding: 6px 8px;
+}
+.case-lightbox__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 12px;
+  background: rgba(45, 45, 45, .48);
+  z-index: 2;
+  transition: background-color 180ms ease, scale 180ms ease;
+  line-height: 1;
+}
+.case-lightbox__arrow--prev { left: 9px; }
+.case-lightbox__arrow--next { right: 9px; }
+.case-lightbox__arrow[hidden] { display: none; }
+.case-lightbox__close:focus-visible,
+.case-lightbox__arrow:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  border-radius: 5px;
+}
+
+@media (max-width: 650px) {
+  .case-gallery-slider__arrow { width: 44px; height: 44px; }
+  .case-gallery-slider__arrow--prev { left: 9px; }
+  .case-gallery-slider__arrow--next { right: 9px; }
+  .case-lightbox {
+    width: calc(100vw - 16px);
+    padding: 48px 52px 22px;
+    border-radius: 10px;
+  }
+  .case-lightbox__arrow { width: 44px; height: 44px; }
+  .case-lightbox__arrow--prev { left: 3px; }
+  .case-lightbox__arrow--next { right: 3px; }
+  .case-lightbox__close { right: 9px; }
+}
+
+.case-gallery-slider__arrow svg, .case-lightbox__arrow svg { display: block; pointer-events: none; }
+@media (hover: hover) {
+  .case-gallery-slider__arrow:hover, .case-lightbox__arrow:hover { background: rgba(45, 45, 45, .48); }
+}
+.case-gallery-slider__arrow:active, .case-lightbox__arrow:active { scale: .95; }
+@media (prefers-reduced-motion: reduce) {
+  .case-gallery-slider__arrow, .case-lightbox__arrow { transition: none; }
+}
+
+/* Neutral, transparent navigation med præcist centrerede pile. */
+.case-detail-media .case-gallery-slider__arrow,
+.case-lightbox .case-lightbox__arrow {
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 12px;
+  background: rgba(45, 45, 45, .48);
+  color: #fff;
+  line-height: 1;
+}
+.case-detail-media .case-gallery-slider__arrow:is(:hover, :active, :focus-visible),
+.case-lightbox .case-lightbox__arrow:is(:hover, :active, :focus-visible) {
+  background: rgba(45, 45, 45, .48);
+  color: #fff;
+}
+.case-detail-media .case-gallery-slider__arrow[hidden],
+.case-lightbox .case-lightbox__arrow[hidden] { display: none; }
+.case-gallery-slider__arrow svg,
+.case-lightbox__arrow svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  display: block;
+  pointer-events: none;
+}
+
+/* Sort hover på enheder med mus; pilen forbliver centreret. */
+@media (hover: hover) {
+  .case-detail-media .case-gallery-slider__arrow:hover,
+  .case-lightbox .case-lightbox__arrow:hover {
+    background: #000;
+    color: #fff;
+  }
+}
+
+.case-gallery-slider__arrow svg,
+.case-lightbox__arrow svg {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.case-gallery-slider__arrow--next svg,
+.case-lightbox__arrow--next svg {
+  margin-left: 0.5px;
+}
+
+.case-gallery-slider__arrow--prev svg,
+.case-lightbox__arrow--prev svg {
+  margin-left: -0.5px;
+}
