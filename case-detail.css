@@ -1,0 +1,162 @@
+/* Fælles styling for alle fire caseundersider. Ændrer ikke forsidens styling. */
+
+.case-detail-hero {
+  padding-top: clamp(70px, 8vw, 115px);
+  padding-bottom: 10px;
+}
+
+.case-detail-hero h1 {
+  max-width: 1100px;
+  margin: 0;
+  font-size: clamp(50px, 5.4vw, 82px);
+  font-weight: 790;
+  line-height: 1.05;
+  letter-spacing: -0.065em;
+}
+
+.case-detail-intro {
+  max-width: 850px;
+  margin: 35px 0 0;
+  color: #000000;
+  font-size: clamp(21px, 2.05vw, 30px);
+  line-height: 1.45;
+  letter-spacing: -0.025em;
+}
+
+/* Fortælling og kort – kan genbruges på alle caseundersider. */
+.case-detail-story {
+  padding-bottom: clamp(40px, 5vw, 64px);
+}
+
+.case-detail-story__text {
+  max-width: 1200px;
+}
+
+.case-detail-story__text h2 {
+  margin: 0 0 18px;
+  font-size: clamp(26px, 2.6vw, 32px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.case-detail-story__text p {
+  margin: 0 0 18px;
+  color: #000000;
+  font-size: clamp(16px, 1.3vw, 18px);
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+.case-detail-story__text p:last-child {
+  margin-bottom: 0;
+}
+
+.case-detail-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: clamp(30px, 4vw, 46px);
+}
+
+.case-detail-highlight {
+  min-width: 0;
+  padding: clamp(20px, 2.2vw, 28px);
+  background: #eeede8;
+  border: 1px solid #e3e1db;
+  border-radius: 14px;
+}
+
+.case-detail-highlight__number {
+  display: block;
+  margin-bottom: 20px;
+  color: #74786e;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.case-detail-highlight h3 {
+  margin: 0 0 9px;
+  color: #000000;
+  font-size: clamp(18px, 1.5vw, 21px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.case-detail-highlight p {
+  margin: 0;
+  color: #000000;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.case-detail-media {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding-bottom: clamp(75px, 8vw, 115px);
+}
+
+.case-detail-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.case-detail-placeholder {
+  aspect-ratio: 4 / 3;
+  min-width: 0;
+  border-radius: 18px;
+  padding: clamp(20px, 3vw, 35px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.case-detail-placeholder--image {
+  background: #e9e4df;
+  color: #161918;
+}
+
+.case-detail-placeholder--video {
+  background: #202522;
+  color: #fff;
+}
+
+.case-detail-placeholder__type {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+}
+
+.case-detail-placeholder__caption {
+  font-size: clamp(18px, 1.5vw, 24px);
+  font-weight: 580;
+  letter-spacing: -0.025em;
+}
+
+.case-detail-placeholder__play {
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  font-size: 23px;
+  padding-left: 4px;
+}
+
+/* Tilpasning til smallere skærme – ændrer kun casens egen styling */
+@media (max-width: 750px) {
+  .case-detail-hero { padding-top: 70px; padding-bottom: 36px; }
+  .case-detail-highlights { grid-template-columns: 1fr; gap: 12px; }
+  .case-detail-highlight { padding: 20px 22px; }
+  .case-detail-highlight__number { margin-bottom: 10px; }
+  .case-detail-media { grid-template-columns: 1fr; gap: 15px; padding-bottom: 95px; }
+  .case-detail-placeholder { aspect-ratio: 4 / 3; }
+}
