@@ -184,7 +184,7 @@
         const now = performance.now();
 
         // En pause i wheel-events betyder en ny swipe-bevægelse.
-        if (now - previousEventTime > 220) {
+        if (now - previousEventTime > 60) {
           distanceX = 0;
           changedInGesture = false;
         }

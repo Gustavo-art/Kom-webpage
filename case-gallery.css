@@ -31,7 +31,7 @@
   padding: 0;
   margin: 0;
   background: transparent;
-  cursor: zoom-in;
+  cursor: default;
 }
 
 .case-gallery-slider__open[hidden] {
